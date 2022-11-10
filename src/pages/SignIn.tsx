@@ -33,8 +33,11 @@ function SignIn() {
     Alert.alert('알림', '로그인 되었습니다.');
   }, [email, password]);
 
-  const onClick = useCallback(() => {
-    console.log('정보찾기', '검색중');
+  const onFindId = useCallback(() => {
+    console.log('아이디 찾기', '검색중');
+  }, []);
+  const onFindPw = useCallback(() => {
+    console.log('비밀번호 찾기', '검색중');
   }, []);
   const canGoNext = email && password;
   return (
@@ -70,10 +73,10 @@ function SignIn() {
       <View style={styles.Btn}>
         <View style={styles.BtnZone}>
           <View style={styles.findBtn}>
-            <Pressable onPress={onClick} style={styles.findIdBtn}>
+            <Pressable onPress={onFindId} style={styles.findIdBtn}>
               <Text style={styles.findIdText}>아이디 찾기</Text>
             </Pressable>
-            <Pressable onPress={onClick} style={styles.findPwBtn}>
+            <Pressable onPress={onFindPw} style={styles.findPwBtn}>
               <Text style={styles.findPwText}>비밀번호 찾기</Text>
             </Pressable>
           </View>
