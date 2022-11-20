@@ -1,4 +1,4 @@
-package com.dogwalkingwithfriends.newarchitecture.modules;
+package com.idle.dogwalkingwithfriends.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

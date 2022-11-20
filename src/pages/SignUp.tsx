@@ -9,12 +9,19 @@ import {
   View,
 } from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../App';
+import {LoggedInParamList, RootStackParamList} from '../../App';
 import DismissKeyboardView from '../components/DismissKeyboardView';
-
-type SignUpScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>;
+import {Screen} from 'react-native-screens';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
+// import setLoggedIn from '../../App';
+type SignUpScreenProps = NativeStackScreenProps<
+  RootStackParamList,
+  'SignUp',
+  'Home'
+>;
 
 function SignUp({navigation}: SignUpScreenProps) {
+  const navigationH = useNavigation<NavigationProp<LoggedInParamList>>();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -31,6 +38,10 @@ function SignUp({navigation}: SignUpScreenProps) {
   const onChangePassword = useCallback(text => {
     setPassword(text.trim());
   }, []);
+  const onPass = useCallback(() => {
+    navigationH.navigate('Home');
+  }, [navigationH]);
+
   const onSubmit = useCallback(() => {
     if (!email || !email.trim()) {
       return Alert.alert('알림', '이메일을 입력해주세요.');
@@ -121,6 +132,9 @@ function SignUp({navigation}: SignUpScreenProps) {
           disabled={!canGoNext}
           onPress={onSubmit}>
           <Text style={styles.loginButtonText}>회원가입</Text>
+        </Pressable>
+        <Pressable>
+          <Text onPress={onPass}>Pass</Text>
         </Pressable>
       </View>
     </DismissKeyboardView>

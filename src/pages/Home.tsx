@@ -1,11 +1,20 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+import Ing from './Ing';
+
+const Stack = createNativeStackNavigator();
 
 function Home() {
   return (
-    <View>
-      <Text>홈</Text>
-    </View>
+    <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen
+        name="Ing"
+        component={Ing}
+        options={{headerShown: false}}
+        // options={{headerShown: false}}
+      />
+    </Stack.Navigator>
   );
 }
 

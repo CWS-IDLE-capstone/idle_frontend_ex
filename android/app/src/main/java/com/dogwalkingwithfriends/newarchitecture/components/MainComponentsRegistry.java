@@ -1,4 +1,4 @@
-package com.dogwalkingwithfriends.newarchitecture.components;
+package com.idle.dogwalkingwithfriends.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;
