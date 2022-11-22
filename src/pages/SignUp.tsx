@@ -11,7 +11,7 @@ import {
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {LoggedInParamList, RootStackParamList} from '../../App';
 import DismissKeyboardView from '../components/DismissKeyboardView';
-import {Screen} from 'react-native-screens';
+// import {Screen} from 'react-native-screens';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 // import setLoggedIn from '../../App';
 type SignUpScreenProps = NativeStackScreenProps<
@@ -20,8 +20,8 @@ type SignUpScreenProps = NativeStackScreenProps<
   'Home'
 >;
 
-function SignUp({navigation}: SignUpScreenProps) {
-  const navigationH = useNavigation<NavigationProp<LoggedInParamList>>();
+function SignUp({navigation, setLoggedIn}: any) {
+  // const navigationH = useNavigation<NavigationProp<LoggedInParamList>>();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -38,9 +38,12 @@ function SignUp({navigation}: SignUpScreenProps) {
   const onChangePassword = useCallback(text => {
     setPassword(text.trim());
   }, []);
-  const onPass = useCallback(() => {
-    navigationH.navigate('Home');
-  }, [navigationH]);
+  // const onPass = useCallback(() => {
+  //   navigationH.navigate('Home');
+  // }, [navigationH]);
+  const onPass = () => {
+    setLoggedIn(true);
+  };
 
   const onSubmit = useCallback(() => {
     if (!email || !email.trim()) {
